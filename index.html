@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Feedback formatter</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.4/milligram.min.css">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style media="screen">
+
+			body {
+				max-width: 1024px;
+				margin: auto;
+				padding: 2em 1em;
+			}
+
+			input, label { display: inline; }
+
+			input[type='number'] { width: 90%; }
+
+			footer { color: #999; }
+
+			p { margin-bottom: 0.5em; }
+
+			.block {
+				background-color: #f8f8f8;
+				padding: 2em;
+			}
+
+			.bold {
+				font-weight: bold;
+			}
+
+			textarea {
+				max-width: 992px;
+				height: 300px;
+			}
+
+			textarea.error {
+				border-color: red;
+			}
+
+			#charcount {
+				padding: 0.5em;
+			}
+
+			#charcount.error {
+				color: red;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>Feedback formatter</h1>
+		<hr>
+		<div class="row block">
+			<div class="column">
+				<p>Probably some explainer text.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="column">
+				<textarea id="content"></textarea>
+			</div>
+ 		</div>
+
+		<div class="row">
+			<div class="column">
+
+				<div class="clearfix">
+
+					<div class="float-left">
+						<button type="button">Reformat</button>
+						<button type="button" class="js-clipboard" data-clipboard-action="cut" data-clipboard-target="#content">Cut to clipboard</button>
+					</div>
+					<div class="float-right">
+						<p id="charcount"><span id="char">0</span>/<span id="max">5000</span> characters</p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<footer class="row">
+			<div class="column">
+				<hr>
+				<p>Please address questions to <a href="mailto:w.p.hughes@reading.ac.uk">Will Hughes</a>.</p>
+				<p>This is not an official resource, and is for informational purposes only.</p>
+				<p><a target="_blank" href="https://github.com/will-hughes/feedbackformatter"><img style="opacity: 0.4" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="30" alt="" /></a></p>
+			</div>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js" charset="utf-8"></script>
+		<script src="js/main.js" charset="utf-8"></script>
+		<script src="js/characterCount.js" charset="utf-8"></script>
+	</body>
+</html>
