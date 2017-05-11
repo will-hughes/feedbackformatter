@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	var $el = $('textarea#content');
+	var $copy = $('button.js-clipboard');
 
 	function mangle(text) {
 		return text.replace(/\t\t/g, '\t')	// Change TAB TAB to TAB
@@ -24,11 +25,21 @@ $(document).ready(function() {
 		});
 	}
 
-	function update() {
-		var content = $el.val();
+	function copied() {
+		$copy.addClass('success');
+		setTimeout(function () {
+			$copy.removeClass('success');
+		}, 2000);
+	}
 
-		$el.val(mangle(content));
+	function getText() {
+		return mangle($el.val());
+	}
 
+	function onClick() {
+		var content = getText();
+
+		$el.val(content);
 		$el.trigger('input');
 
 		$('html, body').scrollTop( $(document).height() );
@@ -36,7 +47,15 @@ $(document).ready(function() {
 
 	autoresize();
 
-	new Clipboard('.js-clipboard');
+	var clipboard = new Clipboard('.js-clipboard', {
+		text: function () {
+			var content = getText();
+			var mangled = content.replace(/\n\n/g, '\<br/>\<br/>\n');
+			console.log(mangled);
+			return mangled;
+		}
+	});
+	clipboard.on('success', copied);
 
-	$('button').on('click', update);
+	$('button').on('click', onClick);
 });
